@@ -1,4 +1,4 @@
-#This script fetches papers related to ferroelectricity and saves first butch of DOIs to a text file from request.
+#This script fetches papers related to ferroelectricity and saves first batch of DOIs to a text file from request.
 #In VOSviewer information from DOI file has limited application, no keywords co-occurence for example
 
 from semanticscholar import SemanticScholar
