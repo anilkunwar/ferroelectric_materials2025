@@ -1,4 +1,4 @@
-# ferroelectric_materials2025
+# Informatics of Ferroelectric Materials
 
 # Named Entity Recognition for Linking Text (Entity) to Knowledge Base of Ferroelectricity
   
