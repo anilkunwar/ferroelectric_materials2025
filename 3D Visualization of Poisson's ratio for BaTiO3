@@ -1,0 +1,15 @@
+The text file consisting of the stiffness matrices (6 x 6) for Poisson's ratio for cubic BaTiO3 (mp-2998):
+    C = | C₁₁  C₁₂  C₁₃  0    0    0   |
+        | C₁₂  C₁₁  C₁₃  0    0    0   |
+        | C₁₃  C₁₃  C₃₃  0    0    0   |
+        |  0    0    0   C₄₄  0    0   |
+        |  0    0    0    0   C₄₄  0   |
+        |  0    0    0    0    0   C₆₆ |
+
+Input: stiffness matrix (coefficients in GPa) of BaTiO3 (Materials Project id mp-2998)
+       286      108      108       -0       -0        0  
+       108      286      108        0       -0       -0  
+       108      108      286       -0        0       -0  
+        -0        0       -0      120        0        0  
+        -0       -0        0        0      120        0  
+         0       -0       -0        0        0      120  
