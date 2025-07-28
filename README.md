@@ -15,7 +15,7 @@ Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/mechTetrgonalB
 
 ![alt text](https://github.com/anilkunwar/ferroelectric_materials2025/blob/main/psp-relationship/visualization/E-nu-BaTiO3-phases.jpg?raw=true)
 
-Piezoelectric Tensor Visualization (Structure - Property)
+Piezoelectric Coefficient (d33) Visualization (Structure - Property)
 
 Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTetrgonalBatio3-streamlit-red)](https://visualizationeij-batio3tetragonal.streamlit.app/)
 
