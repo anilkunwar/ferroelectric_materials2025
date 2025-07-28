@@ -208,3 +208,23 @@ where:
 
 The result is converted to pC/N for visualization (1 C/N = 10¹² pC/N).
 """, unsafe_allow_html=True)
+material_name = "BaTiO₃"  # or dynamically selected by user
+
+st.subheader(f"Formula for Effective Piezoelectric Coefficient of ${material_name}$")
+
+st.markdown(rf"""
+The effective longitudinal piezoelectric coefficient \( d_{{33}}^{{\text{{eff}}}} \) for **{material_name}** along direction \( \mathbf{{n}} = [l, m, n] \) is given by:
+
+\[
+d_{{33}}^{{\text{{eff}}}} = \mathbf{{n}}^T \mathbf{{d}} \mathbf{{a}}, \quad \mathbf{{n}} = \begin{{bmatrix}} l \\ m \\ n \end{{bmatrix}}, \quad \mathbf{{a}} = \begin{{bmatrix}} l^2 \\ m^2 \\ n^2 \\ 2mn \\ 2nl \\ 2lm \end{{bmatrix}}, \quad \mathbf{{d}} = \mathbf{{e}} \mathbf{{S}}
+\]
+
+where:
+- \( \mathbf{{e}} \) is the 3×6 piezoelectric tensor (C/m²).
+- \( \mathbf{{S}} = \mathbf{{C}}^{{-1}} \) is the 6×6 compliance matrix (GPa⁻¹).
+- \( \mathbf{{d}} \) is the piezoelectric coefficient tensor (C/N).
+- Along [001]: \( d_{{33}} = d_{{333}} \).
+
+The result is converted to pC/N for visualization (1 C/N = \(10^{{12}}\) pC/N).
+""", unsafe_allow_html=True)
+
