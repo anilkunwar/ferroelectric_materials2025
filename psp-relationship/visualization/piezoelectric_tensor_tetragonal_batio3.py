@@ -72,13 +72,13 @@ except ValueError:
 
 # Compute compliance matrix
 try:
-    S = inv(C)
+    S = inv(C)  # S in GPa^-1
 except np.linalg.LinAlgError:
     st.error("Stiffness matrix is singular or invalid. Please check the input.")
     st.stop()
 
 # Compute piezoelectric coefficient tensor d = e * S
-d = e @ S  # Units: C/N
+d = e @ S * 1e3  # Convert to pC/N (S in GPa^-1, e in C/m^2, d in 10^-9 C/N * 10^12 pC/C = 10^3 pC/N)
 
 # Colormap selection
 colormaps = [
@@ -104,8 +104,8 @@ def compute_d33_eff(direction, d):
     l, m, n = direction / np.linalg.norm(direction)
     n_vec = np.array([l, m, n])
     a = np.array([l**2, m**2, n**2, 2*m*n, 2*n*l, 2*l*m])
-    d33_eff = n_vec.T @ d @ a  # Units: C/N
-    return d33_eff * 1e12  # Convert to pC/N for typical units
+    d33_eff = n_vec.T @ d @ a  # Units: pC/N
+    return d33_eff
 
 # Generate points for 3D plot
 theta = np.linspace(0, np.pi, 50)
@@ -123,7 +123,7 @@ for i in range(x.shape[0]):
         d33_values[i, j] = compute_d33_eff(direction, d)
 
 # Validate piezoelectric coefficient
-d33_001 = d[2, 2] * 1e12  # Along [001], in pC/N
+d33_001 = d[2, 2]  # Along [001], in pC/N
 if abs(d33_001) > 1000:
     st.warning(f"Piezoelectric coefficient d33 along [001] is {d33_001:.2f} pC/N, which is unusually large. Typical values are below 1000 pC/N.")
 if np.max(np.abs(d33_values)) > 1000 or np.min(d33_values) < -1000:
@@ -192,37 +192,33 @@ st.write(f"Maximum d33: {d33_values[max_d33_idx]:.2f} pC/N")
 st.write(f"Minimum d33: {d33_values[min_d33_idx]:.2f} pC/N")
 
 # LaTeX formulas
-st.subheader("Formula for Effective Piezoelectric Coefficient")
+st.subheader("Formula: Theoretical Background")
 st.markdown(r"""
-# Piezoelectric Properties:
+The longitudinal piezoelectric coefficient \( d_{33}^{\text{eff}} \) along direction \( \mathbf{n} = [l, m, n] = [\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta] \) is given by:
 
-**Effective Piezoelectric Coefficient (\(d_{33}^{\text{eff}}\))**: Longitudinal response along direction \((l, m, n)\).
+\[
+d_{33}^{\text{eff}} = \sum_{i,j,k=1}^3 n_i e_{ijk} \varepsilon_{jk}
+\]
 
-$$
-d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad
-\mathbf{n} = \begin{bmatrix} l & m & n \end{bmatrix}^T, \quad
-\mathbf{a} = \begin{bmatrix} l^2 & m^2 & n^2 & 2 m n & 2 n l & 2 l m \end{bmatrix}^T, \quad
-\mathbf{d} = \mathbf{e} \mathbf{S}
-$$
+where \( e_{ijk} \) is the piezoelectric tensor (in C/m²), and \( \varepsilon_{jk} \) is the strain tensor induced by a uniaxial stress along \( \mathbf{n} \). In Voigt notation, the strain is:
 
-Where:
+\[
+\mathbf{\varepsilon} = \mathbf{S} \mathbf{\sigma}, \quad \mathbf{\sigma} = [0, 0, 0, 0, 0, 1]^T n_i n_j
+\]
 
-- \( \mathbf{e} \): 3×6 piezoelectric tensor (C/m²)
-- \( \mathbf{S} = \mathbf{C}^{-1} \): 6×6 compliance matrix (GPa⁻¹)
-- \( \mathbf{d} \): 3×6 piezoelectric coefficient tensor (C/N)
+However, for the effective piezoelectric coefficient, we need the piezoelectric coefficient \( \mathbf{d} = \mathbf{e} \mathbf{S} \) (in C/N), where \( \mathbf{S} \) is the 6x6 compliance matrix. The effective longitudinal piezoelectric coefficient is:
 
-Along [001]:
+\[
+d_{33}^{\text{eff}} = \sum_{i=1}^3 n_i \left( \sum_{j,k=1}^3 e_{ijk} \sum_{p,q=1}^3 S_{jkpq} n_p n_q \right)
+\]
 
-$$
-d_{33}^{\text{eff}} = d_{333}
-$$
+In Voigt notation, this simplifies to:
 
-The result is converted to **pC/N** for visualization, where:
+\[
+d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad \mathbf{n} = [l, m, n]^T, \quad \mathbf{a} = [l^2, m^2, n^2, 2mn, 2nl, 2lm]^T
+\]
 
-$$
-1~\text{C/N} = 10^{12}~\text{pC/N}
-$$
+where \( \mathbf{d} = \mathbf{e} \mathbf{S} \), and \( \mathbf{a} \) is the Voigt strain vector for uniaxial stress along \( \mathbf{n} \). The tensor \( \mathbf{d} \) has components \( d_{ij} = \sum_k e_{ik} S_{kj} \), converting from C/m² to C/N. This formula is general and applies to all crystal symmetries, including tetragonal BaTiO3.
+
+The result is converted to pC/N for visualization, where \( \mathbf{S} \) is in GPa\(^{-1}\), so \( \mathbf{d} = \mathbf{e} \mathbf{S} \) is in \( 10^{-9} \) C/N, and multiplying by \( 10^{12} \) pC/C gives \( 10^3 \) pC/N.
 """, unsafe_allow_html=True)
-
-
-
