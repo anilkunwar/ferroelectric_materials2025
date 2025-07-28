@@ -44,7 +44,9 @@ C_{15} & C_{25} & C_{35} & C_{45} & C_{55} & C_{56} \\
 C_{16} & C_{26} & C_{36} & C_{46} & C_{56} & C_{66}
 \end{pmatrix}
 """)
-
+st.subheader("The following visualization is applicable to all crystal symmetries for 3D materials, 
+including cubic, tetragonal, orthorhombic, and lower symmetries like
+monoclinic and triclinic, when provided with a valid 6x6 stiffness matrix in Voigt notation.")
 
 # Input for stiffness matrix
 st.sidebar.subheader(f"Stiffness Matrix Input (6x6, GPa) for {material_name} ")
