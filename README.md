@@ -8,4 +8,9 @@
 # Process-Structure-Property-Performance Relationship in Ferroelectric Materials
 
 Elastic Properties Visualization
-[![meaningtowords](https://img.shields.io/badge/mechCubicBatio3-streamlit-red)](https://visualizationcij-batio3cubic.streamlit.app/)
+
+Cubic BaTiO3 [![meaningtowords](https://img.shields.io/badge/mechCubicBatio3-streamlit-red)](https://visualizationcij-batio3cubic.streamlit.app/)
+
+Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/mechTetrgonalBatio3-streamlit-red)](https://visualizationcij-batio3tetragonal.streamlit.app/)
+
+
