@@ -194,20 +194,35 @@ st.write(f"Minimum d33: {d33_values[min_d33_idx]:.2f} pC/N")
 # LaTeX formulas
 st.subheader("Formula for Effective Piezoelectric Coefficient")
 st.markdown(r"""
-The effective longitudinal piezoelectric coefficient \( d_{33}^{\text{eff}} \) along direction \( \mathbf{n} = [l, m, n] \) is given by:
+# Piezoelectric Properties:
 
-\[
-d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad \mathbf{n} = \begin{bmatrix} l \\ m \\ n \end{bmatrix}, \quad \mathbf{a} = \begin{bmatrix} l^2 \\ m^2 \\ n^2 \\ 2mn \\ 2nl \\ 2lm \end{bmatrix}, \quad \mathbf{d} = \mathbf{e} \mathbf{S}
-\]
+**Effective Piezoelectric Coefficient (\(d_{33}^{\text{eff}}\))**: Longitudinal response along direction \((l, m, n)\).
 
-where:
+$$
+d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad
+\mathbf{n} = \begin{bmatrix} l & m & n \end{bmatrix}^T, \quad
+\mathbf{a} = \begin{bmatrix} l^2 & m^2 & n^2 & 2 m n & 2 n l & 2 l m \end{bmatrix}^T, \quad
+\mathbf{d} = \mathbf{e} \mathbf{S}
+$$
 
-- \( \mathbf{e} \) is the 3×6 piezoelectric tensor (C/m²).
-- \( \mathbf{S} = \mathbf{C}^{-1} \) is the 6×6 compliance matrix (GPa⁻¹).
-- \( \mathbf{d} \) is the piezoelectric coefficient tensor (C/N).
-- Along [001]: \( d_{33} = d_{333} \).
+Where:
 
-The result is converted to pC/N for visualization (1 C/N = \(10^{12}\) pC/N).
+- \( \mathbf{e} \): 3×6 piezoelectric tensor (C/m²)
+- \( \mathbf{S} = \mathbf{C}^{-1} \): 6×6 compliance matrix (GPa⁻¹)
+- \( \mathbf{d} \): 3×6 piezoelectric coefficient tensor (C/N)
+
+Along [001]:
+
+$$
+d_{33}^{\text{eff}} = d_{333}
+$$
+
+The result is converted to **pC/N** for visualization, where:
+
+$$
+1~\text{C/N} = 10^{12}~\text{pC/N}
+$$
 """, unsafe_allow_html=True)
+
 
 
