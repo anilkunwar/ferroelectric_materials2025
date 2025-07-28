@@ -194,31 +194,67 @@ st.write(f"Minimum d33: {d33_values[min_d33_idx]:.2f} pC/N")
 # LaTeX formulas
 st.subheader("Formula: Theoretical Background")
 st.markdown(r"""
-The longitudinal piezoelectric coefficient \( d_{33}^{\text{eff}} \) along direction \( \mathbf{n} = [l, m, n] = [\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta] \) is given by:
-
+The **longitudinal piezoelectric coefficient** \( d_{33}^{\text{eff}} \) along direction 
 \[
-d_{33}^{\text{eff}} = \sum_{i,j,k=1}^3 n_i e_{ijk} \varepsilon_{jk}
+\mathbf{n} = [l, m, n] = [\sin\theta \cos\phi, \sin\theta \sin\phi, \cos\theta]
 \]
+is given by:
 
-where \( e_{ijk} \) is the piezoelectric tensor (in C/m²), and \( \varepsilon_{jk} \) is the strain tensor induced by a uniaxial stress along \( \mathbf{n} \). In Voigt notation, the strain is:
+$$
+d_{33}^{\text{eff}} = \sum_{i,j,k=1}^3 n_i \, e_{ijk} \, \varepsilon_{jk}
+$$
 
-\[
-\mathbf{\varepsilon} = \mathbf{S} \mathbf{\sigma}, \quad \mathbf{\sigma} = [0, 0, 0, 0, 0, 1]^T n_i n_j
-\]
+where:
 
-However, for the effective piezoelectric coefficient, we need the piezoelectric coefficient \( \mathbf{d} = \mathbf{e} \mathbf{S} \) (in C/N), where \( \mathbf{S} \) is the 6x6 compliance matrix. The effective longitudinal piezoelectric coefficient is:
+- \( e_{ijk} \): Piezoelectric tensor (C/m²)  
+- \( \varepsilon_{jk} \): Strain tensor induced by uniaxial stress along \( \mathbf{n} \)
 
-\[
+In Voigt notation, the strain becomes:
+
+$$
+\boldsymbol{\varepsilon} = \mathbf{S} \boldsymbol{\sigma}, \quad 
+\boldsymbol{\sigma} = 
+\begin{bmatrix} 0 & 0 & 0 & 0 & 0 & 1 \end{bmatrix}^T n_i n_j
+$$
+
+We define the **piezoelectric coefficient tensor** in Voigt notation as:
+
+$$
+\mathbf{d} = \mathbf{e} \mathbf{S}
+$$
+
+Then, the effective longitudinal piezoelectric coefficient becomes:
+
+$$
 d_{33}^{\text{eff}} = \sum_{i=1}^3 n_i \left( \sum_{j,k=1}^3 e_{ijk} \sum_{p,q=1}^3 S_{jkpq} n_p n_q \right)
-\]
+$$
 
-In Voigt notation, this simplifies to:
+This simplifies in Voigt notation to:
 
-\[
-d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad \mathbf{n} = [l, m, n]^T, \quad \mathbf{a} = [l^2, m^2, n^2, 2mn, 2nl, 2lm]^T
-\]
+$$
+d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad
+\mathbf{n} = 
+\begin{bmatrix} l \\ m \\ n \end{bmatrix}, \quad
+\mathbf{a} = 
+\begin{bmatrix} l^2 \\ m^2 \\ n^2 \\ 2mn \\ 2nl \\ 2lm \end{bmatrix}
+$$
 
-where \( \mathbf{d} = \mathbf{e} \mathbf{S} \), and \( \mathbf{a} \) is the Voigt strain vector for uniaxial stress along \( \mathbf{n} \). The tensor \( \mathbf{d} \) has components \( d_{ij} = \sum_k e_{ik} S_{kj} \), converting from C/m² to C/N. This formula is general and applies to all crystal symmetries, including tetragonal BaTiO3.
+where:
 
-The result is converted to pC/N for visualization, where \( \mathbf{S} \) is in GPa\(^{-1}\), so \( \mathbf{d} = \mathbf{e} \mathbf{S} \) is in \( 10^{-9} \) C/N, and multiplying by \( 10^{12} \) pC/C gives \( 10^3 \) pC/N.
+- \( \mathbf{d} \): 3×6 matrix with \( d_{ij} = \sum_k e_{ik} S_{kj} \)
+- \( \mathbf{a} \): Voigt strain vector for uniaxial stress along \( \mathbf{n} \)
+
+This formulation is general and applies to any crystal symmetry, including tetragonal BaTiO₃.
+
+---
+
+**Unit Conversion Note:**
+
+- \( \mathbf{S} \): in GPa\(^{-1}\)
+- \( \mathbf{d} = \mathbf{e} \mathbf{S} \): in \(10^{-9}\) C/N  
+- Convert result to **pC/N** by multiplying by \(10^{12}\):  
+  \[
+  1~\text{C/N} = 10^{12}~\text{pC/N} \Rightarrow d_{33}^{\text{eff}} \times 10^3~\text{(pC/N)}
+  \]
 """, unsafe_allow_html=True)
+
