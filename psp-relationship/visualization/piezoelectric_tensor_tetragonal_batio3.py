@@ -240,32 +240,35 @@ d_{33}^{\text{eff}} = \mathbf{n}^T \mathbf{d} \mathbf{a}, \quad
 $$ """, unsafe_allow_html=True)
 
 st.markdown(r"""
-where:
+---
+
+**Where:**
 
 - \( \mathbf{d} \): A \(3 \times 6\) piezoelectric coefficient matrix with components  
-  \[
+  $$
   d_{ij} = \sum_{k=1}^6 e_{ik} S_{kj}
-  \]
+  $$
   converting from piezoelectric stress constants (C/m²) to strain constants (C/N).
-  
-- \( \mathbf{a} \): The Voigt strain vector corresponding to uniaxial stress along direction \( \mathbf{n} = [l, m, n] \), defined as  
-  \[
-  \mathbf{a} = \begin{bmatrix} l^2 \\ m^2 \\ n^2 \\ 2mn \\ 2nl \\ 2lm \end{bmatrix}
-  \]
 
-This formulation is **general** and applies to all crystal symmetries, including **tetragonal BaTiO₃**.
+- \( \mathbf{a} \): The Voigt strain vector corresponding to uniaxial stress along direction \( \mathbf{n} = [l, m, n] \), defined as  
+  $$
+  \mathbf{a} = \begin{bmatrix} l^2 \\ m^2 \\ n^2 \\ 2mn \\ 2nl \\ 2lm \end{bmatrix}
+  $$
+
+This formulation is general and applies to **any crystal symmetry**, including **tetragonal BaTiO₃**.
 
 ---
 
 ### Unit Conversion Note:
 
-- \( \mathbf{S} \): Compliance matrix, with units of GPa\(^{-1}\)
-- \( \mathbf{d} = \mathbf{e} \mathbf{S} \): Resulting in units of \(10^{-9}\) C/N
+- \( \mathbf{S} \): Compliance matrix, in units of GPa\(^{-1}\)  
+- \( \mathbf{d} = \mathbf{e} \mathbf{S} \): Yields units of \(10^{-9}\) C/N  
 - To express \( d_{33}^{\text{eff}} \) in **picoCoulombs per Newton (pC/N)**, multiply by \(10^{12}\):
 
-\[
+$$
 1~\text{C/N} = 10^{12}~\text{pC/N} \quad \Rightarrow \quad d_{33}^{\text{eff}}~[\text{C/N}] \times 10^3 = d_{33}^{\text{eff}}~[\text{pC/N}]
-\]
+$$
 """, unsafe_allow_html=True)
+
 
 
