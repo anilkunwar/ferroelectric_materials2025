@@ -19,3 +19,5 @@ Piezoelectric Coefficient (d33) Visualization (Structure - Property)
 
 Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTetrgonalBatio3-streamlit-red)](https://visualizationeij-batio3tetragonal.streamlit.app/)
 
+Trigonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTrigonalBatio3-streamlit-red)](https://visualizationdij-batio3trigonal.streamlit.app/)
+
