@@ -7,7 +7,7 @@
 
 # Process-Structure-Property-Performance Relationship in Ferroelectric Materials
 
-Elastic Properties Visualization (Structure - Property)
+*Elastic Properties Visualization (Structure - Property)*
 
 Cubic BaTiO3 [![meaningtowords](https://img.shields.io/badge/mechCubicBatio3-streamlit-red)](https://visualizationcij-batio3cubic.streamlit.app/)
 
@@ -15,7 +15,7 @@ Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/mechTetrgonalB
 
 ![alt text](https://github.com/anilkunwar/ferroelectric_materials2025/blob/main/psp-relationship/visualization/E-nu-BaTiO3-phases.jpg?raw=true)
 
-Piezoelectric Coefficient (d33) Visualization (Structure - Property)
+*Piezoelectric Coefficient (d33) Visualization (Structure - Property)*
 
 Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTetrgonalBatio3-streamlit-red)](https://visualizationdij-batio3tetragonal.streamlit.app/)
 
