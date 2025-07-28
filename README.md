@@ -21,3 +21,4 @@ Tetragonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTet
 
 Trigonal BaTiO3 [![meaningtowords](https://img.shields.io/badge/electromechTrigonalBatio3-streamlit-red)](https://visualizationdij-batio3trigonal.streamlit.app/)
 
+![alt text](https://github.com/anilkunwar/ferroelectric_materials2025/blob/main/psp-relationship/visualization/piezoelectric_coefficient.jpg?raw=true)
